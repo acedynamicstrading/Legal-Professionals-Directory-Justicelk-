@@ -1,818 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legal Professionals Directory · Justice LK</title>
-<meta name="description" content="Find qualified legal professionals across Sri Lanka registered with the Justice LK national legal aid programme.">
-<meta name="author" content="Elmo Richard Pereira">
-<meta name="theme-color" content="#0B4E5A">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink:          #1A1209;
-  --ink-mid:      #2E2210;
-  --gold:         #8B6914;
-  --gold-bright:  #C49A2A;
-  --gold-glow:    rgba(196,154,42,0.12);
-  --gold-border:  rgba(196,154,42,0.25);
-  --teal:         #0B4E5A;
-  --teal-bright:  #0E7A8A;
-  --teal-glow:    rgba(14,122,138,0.1);
-  --cream:        #FAF5E8;
-  --cream-dark:   #F0E8D0;
-  --parchment:    #F5EDD8;
-  --muted:        rgba(26,18,9,0.5);
-  --border:       rgba(26,18,9,0.1);
-  --red:          #8B1A1A;
-  --shadow-sm:    0 2px 12px rgba(26,18,9,0.08);
-  --shadow-md:    0 8px 32px rgba(26,18,9,0.12);
-  --shadow-lg:    0 20px 60px rgba(26,18,9,0.15);
-  --r:            10px;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family:'DM Sans',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; }
-.si { font-family:'Noto Serif Sinhala',serif; }
-.ta { font-family:'Noto Sans Tamil',sans-serif; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Professionals Directory · Justice LK</title>
+  <meta name="description" content="Find qualified attorneys, notaries, and legal professionals registered with the Justice LK national legal aid programme across Sri Lanka." />
+  <meta property="og:title" content="Legal Professionals Directory · Justice LK" />
+  <meta property="og:description" content="Find registered attorneys and notaries across Sri Lanka." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 
-/* ══ SCROLLBAR ══ */
-::-webkit-scrollbar { width:5px; }
-::-webkit-scrollbar-track { background:var(--cream-dark); }
-::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --navy2:   #162436;
+      --slate:   #2d4a63;
+      --gold:    #c9a84c;
+      --gold-lt: #e8c97a;
+      --gold-dk: #a07c2e;
+      --cream:   #f7f3ec;
+      --cream2:  #ede8df;
+      --white:   #ffffff;
+      --muted:   #6b7f93;
+      --border:  #d8cfc3;
+      --red:     #b5382a;
+      --green:   #2a7a4b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ══ HEADER ══ */
-header {
-  background:var(--ink);
-  border-bottom:2px solid var(--gold);
-  padding:0 24px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-.header-left { display:flex; align-items:center; gap:12px; }
-.header-emblem {
-  width:34px; height:34px;
-  border-radius:50%;
-  border:1.5px solid var(--gold-bright);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem;
-}
-.header-brand { color:var(--cream); text-decoration:none; }
-.header-brand strong { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:700; }
-.header-brand span { font-size:0.72rem; color:rgba(240,235,224,0.55); display:block; letter-spacing:0.05em; }
-.header-right { display:flex; align-items:center; gap:12px; }
-.header-link { color:rgba(240,235,224,0.7); text-decoration:none; font-size:0.82rem; transition:color 0.2s; }
-.header-link:hover { color:var(--gold-bright); }
-.btn-register-nav {
-  background:var(--gold); color:var(--ink);
-  padding:7px 16px; border-radius:4px;
-  font-weight:700; font-size:0.8rem;
-  text-decoration:none; transition:background 0.2s;
-}
-.btn-register-nav:hover { background:var(--gold-bright); }
+    /* NAV */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 62px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 20px rgba(0,0,0,.4);
+    }
+    .nav-brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-icon  { font-size: 1.5rem; line-height: 1; }
+    .nav-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; color: #fff; line-height: 1.15;
+    }
+    .nav-sub {
+      display: block; font-family: 'DM Sans', sans-serif;
+      font-size: .6rem; font-weight: 400; color: var(--gold);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-links a {
+      color: rgba(255,255,255,.65); text-decoration: none;
+      font-size: .82rem; font-weight: 400; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-btn {
+      background: var(--gold) !important; color: var(--navy) !important;
+      padding: .38rem 1rem !important; border-radius: 4px !important;
+      font-weight: 600 !important; font-size: .78rem !important;
+      transition: background .2s !important; white-space: nowrap;
+    }
+    .nav-btn:hover { background: var(--gold-lt) !important; }
 
-/* ══ HERO ══ */
-.hero {
-  background:var(--ink);
-  padding:56px 24px 48px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(14,122,138,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(196,154,42,0.06) 0%, transparent 70%);
-  pointer-events:none;
-}
-.hero-eyebrow {
-  font-size:0.7rem; letter-spacing:0.22em;
-  text-transform:uppercase; color:var(--teal-bright);
-  font-weight:600; margin-bottom:16px;
-  display:inline-flex; align-items:center; gap:10px;
-}
-.hero-eyebrow::before, .hero-eyebrow::after {
-  content:''; display:block;
-  width:28px; height:1.5px;
-  background:var(--teal-bright);
-}
-.hero h1 {
-  font-size:clamp(2rem,5vw,3rem);
-  color:var(--cream); font-weight:700;
-  line-height:1.15; margin-bottom:14px;
-}
-.hero h1 em { font-style:italic; color:var(--gold-bright); }
-.hero-sub {
-  color:rgba(240,235,224,0.6);
-  font-size:0.95rem; max-width:560px;
-  margin:0 auto 28px; line-height:1.65;
-}
-.hero-stats {
-  display:flex; justify-content:center; gap:32px;
-  flex-wrap:wrap;
-}
-.hero-stat { text-align:center; }
-.hero-stat-num {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.9rem; font-weight:700;
-  color:var(--gold-bright); display:block;
-}
-.hero-stat-lbl {
-  font-size:0.72rem; letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:rgba(240,235,224,0.45);
-}
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 50%, var(--slate) 100%);
+      color: #fff; padding: 4.5rem 2rem 3.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-watermark {
+      position: absolute; font-size: 22rem; opacity: .03;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; line-height: 1; user-select: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold); font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .3rem .85rem; border-radius: 20px; margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 600;
+      line-height: 1.1; margin-bottom: .75rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      font-size: .92rem; color: rgba(255,255,255,.6); max-width: 520px;
+      margin: 0 auto 2.5rem; line-height: 1.7; font-weight: 300;
+    }
+    .stats {
+      display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,.08); padding-top: 2rem;
+    }
+    .stat { padding: 0 2.5rem; text-align: center; position: relative; }
+    .stat + .stat::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%); height: 2rem; width: 1px;
+      background: rgba(255,255,255,.12);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem; font-weight: 700; color: var(--gold); line-height: 1; display: block;
+    }
+    .stat-label {
+      font-size: .68rem; color: rgba(255,255,255,.45);
+      text-transform: uppercase; letter-spacing: .1em; margin-top: .3rem; display: block;
+    }
 
-/* ══ FILTERS ══ */
-.filters-bar {
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:18px 24px;
-  position:sticky; top:60px; z-index:90;
-  box-shadow:var(--shadow-sm);
-}
-.filters-inner {
-  max-width:1100px; margin:0 auto;
-  display:flex; gap:12px; flex-wrap:wrap;
-  align-items:center;
-}
-.filter-group { display:flex; flex-direction:column; gap:4px; flex:1; min-width:160px; }
-.filter-label {
-  font-size:0.68rem; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--muted); font-weight:600;
-}
-.filter-select {
-  padding:8px 12px;
-  border:1.5px solid var(--border);
-  border-radius:6px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.85rem;
-  color:var(--ink);
-  background:#fff;
-  cursor:pointer;
-  transition:border-color 0.2s;
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B6914' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 10px center;
-  padding-right:30px;
-}
-.filter-select:focus { outline:none; border-color:var(--gold-bright); }
-.filter-search {
-  flex:2; min-width:200px;
-}
-.search-input {
-  width:100%;
-  padding:8px 12px 8px 36px;
-  border:1.5px solid var(--border);
-  border-radius:6px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.85rem;
-  color:var(--ink);
-  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238B6914' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E") no-repeat 10px center;
-  transition:border-color 0.2s;
-}
-.search-input:focus { outline:none; border-color:var(--gold-bright); }
-.filter-count {
-  font-size:0.8rem; color:var(--muted);
-  white-space:nowrap; align-self:flex-end;
-  padding-bottom:2px;
-}
+    /* FILTERS */
+    .filters-wrap {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      position: sticky; top: 62px; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .filters-inner {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+      display: flex; gap: .75rem; flex-wrap: wrap; align-items: center;
+    }
+    .filters-inner input, .filters-inner select {
+      font-family: 'DM Sans', sans-serif; font-size: .83rem;
+      color: var(--navy); background: var(--cream);
+      border: 1.5px solid var(--border); border-radius: 6px;
+      padding: .5rem .9rem; outline: none;
+      transition: border-color .2s, box-shadow .2s; cursor: pointer;
+    }
+    .filters-inner input { flex: 1; min-width: 200px; cursor: text; }
+    .filters-inner input:focus, .filters-inner select:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,.12);
+    }
+    .filter-count { margin-left: auto; font-size: .78rem; color: var(--muted); white-space: nowrap; font-weight: 500; }
+    .btn-clear {
+      background: none; border: 1.5px solid var(--border); border-radius: 6px;
+      padding: .5rem .9rem; font-family: 'DM Sans', sans-serif;
+      font-size: .78rem; color: var(--muted); cursor: pointer; transition: all .2s; white-space: nowrap;
+    }
+    .btn-clear:hover { border-color: var(--navy); color: var(--navy); }
 
-/* ══ MAIN GRID ══ */
-.main { max-width:1100px; margin:0 auto; padding:32px 24px 60px; }
+    /* MAIN */
+    .main { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 
-.results-header {
-  display:flex; align-items:center;
-  justify-content:space-between;
-  margin-bottom:24px; flex-wrap:wrap; gap:10px;
-}
-.results-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.3rem; color:var(--ink);
-}
-.results-title span { color:var(--gold); }
+    .state-msg { text-align: center; padding: 5rem 1rem; color: var(--muted); }
+    .state-msg .icon { font-size: 3rem; display: block; margin-bottom: 1rem; opacity: .5; }
+    .state-msg h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+      font-weight: 600; color: var(--navy); margin-bottom: .5rem;
+    }
+    .state-msg p { font-size: .88rem; line-height: 1.6; max-width: 380px; margin: 0 auto; }
 
-/* ══ LAWYER CARDS ══ */
-.lawyers-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
-  gap:20px;
-}
+    .spinner {
+      width: 36px; height: 36px; border: 3px solid var(--cream2);
+      border-top-color: var(--gold); border-radius: 50%;
+      animation: spin .8s linear infinite; margin: 0 auto 1.25rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-.lawyer-card {
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  transition:transform 0.2s, box-shadow 0.2s;
-  display:flex; flex-direction:column;
-}
-.lawyer-card:hover {
-  transform:translateY(-3px);
-  box-shadow:var(--shadow-md);
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
 
-.card-top {
-  background:var(--ink);
-  padding:20px;
-  display:flex; gap:14px; align-items:flex-start;
-  position:relative;
-}
-.card-top::after {
-  content:'';
-  position:absolute; bottom:0; left:0; right:0;
-  height:2px; background:var(--gold);
-}
-.lawyer-photo {
-  width:64px; height:64px;
-  border-radius:50%;
-  border:2px solid var(--gold-bright);
-  object-fit:cover;
-  flex-shrink:0;
-  background:var(--ink-mid);
-}
-.lawyer-photo-placeholder {
-  width:64px; height:64px;
-  border-radius:50%;
-  border:2px solid var(--gold-border);
-  background:var(--ink-mid);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.5rem; flex-shrink:0;
-  color:rgba(240,235,224,0.4);
-}
-.card-name-block { flex:1; min-width:0; }
-.card-name {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.15rem; font-weight:700;
-  color:var(--cream); line-height:1.2;
-  margin-bottom:4px;
-}
-.card-reg-type {
-  display:inline-block;
-  font-size:0.65rem; letter-spacing:0.1em;
-  text-transform:uppercase;
-  background:var(--gold-glow);
-  color:var(--gold-bright);
-  border:1px solid var(--gold-border);
-  padding:2px 8px; border-radius:20px;
-  margin-bottom:4px;
-}
-.card-reg-num {
-  font-size:0.75rem;
-  color:rgba(240,235,224,0.45);
-}
+    /* CARD */
+    .card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+      animation: fadeUp .35s ease both;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,27,42,.1); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-.card-body { padding:16px 18px; flex:1; display:flex; flex-direction:column; gap:12px; }
+    .card-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      padding: 1.4rem 1.5rem 1.2rem; display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .card-avatar {
+      width: 54px; height: 54px; border-radius: 50%;
+      border: 2px solid var(--gold); flex-shrink: 0;
+      background: var(--slate); display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--gold);
+      font-family: 'Cormorant Garamond', serif; font-weight: 700;
+      overflow: hidden;
+    }
+    .card-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+    .card-name-block { flex: 1; min-width: 0; }
+    .card-name {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+      font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: .3rem;
+    }
+    .card-reg-type {
+      display: inline-block; background: rgba(201,168,76,.2); color: var(--gold-lt);
+      font-size: .65rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; padding: .18rem .55rem; border-radius: 3px; margin-bottom: .3rem;
+    }
+    .card-bar-num { font-size: .72rem; color: rgba(255,255,255,.4); font-weight: 300; }
 
-.card-district {
-  display:flex; align-items:center; gap:6px;
-  font-size:0.82rem; color:var(--muted);
-}
-.card-district::before { content:'📍'; font-size:0.8rem; }
+    .card-body { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: .9rem; flex: 1; }
 
-.card-specs { display:flex; flex-wrap:wrap; gap:5px; }
-.spec-tag {
-  font-size:0.68rem;
-  background:var(--teal-glow);
-  color:var(--teal);
-  border:1px solid rgba(14,122,138,0.2);
-  padding:3px 8px; border-radius:20px;
-  font-weight:500;
-}
+    .meta-row { display: flex; align-items: flex-start; gap: .5rem; font-size: .82rem; }
+    .meta-icon { width: 16px; flex-shrink: 0; color: var(--gold-dk); margin-top: .05rem; }
+    .meta-label { color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .meta-val { color: var(--navy); }
 
-.card-langs {
-  font-size:0.78rem; color:var(--muted);
-  display:flex; align-items:center; gap:6px;
-}
-.card-langs strong { color:var(--ink); }
+    .card-divider { border: none; border-top: 1px solid var(--cream2); }
 
-.card-bio {
-  font-size:0.82rem; color:var(--muted);
-  line-height:1.5;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
+    .spec-title {
+      font-size: .68rem; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem;
+    }
+    .spec-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .spec-tag {
+      background: var(--cream); border: 1px solid var(--cream2);
+      color: var(--slate); font-size: .72rem; font-weight: 500;
+      padding: .22rem .6rem; border-radius: 20px;
+    }
 
-.card-fee {
-  font-size:0.8rem;
-  color:var(--ink);
-  font-weight:500;
-  padding-top:4px;
-  border-top:1px solid var(--border);
-}
-.card-fee span { color:var(--gold); font-weight:700; }
+    .lang-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .lang-tag {
+      background: var(--navy); color: rgba(255,255,255,.75);
+      font-size: .68rem; font-weight: 500; padding: .18rem .55rem; border-radius: 3px;
+    }
 
-.card-footer {
-  padding:12px 18px;
-  border-top:1px solid var(--border);
-  display:flex; gap:8px;
-}
-.btn-contact {
-  flex:1; padding:8px;
-  background:var(--ink); color:var(--cream);
-  border:none; border-radius:5px;
-  font-family:'DM Sans',sans-serif;
-  font-size:0.8rem; font-weight:600;
-  cursor:pointer; text-align:center;
-  text-decoration:none;
-  display:flex; align-items:center; justify-content:center; gap:6px;
-  transition:background 0.2s;
-}
-.btn-contact:hover { background:var(--teal); }
-.btn-contact.outline {
-  background:transparent;
-  border:1.5px solid var(--border);
-  color:var(--muted);
-}
-.btn-contact.outline:hover { border-color:var(--gold); color:var(--gold); }
+    .fee-badge {
+      display: inline-block; background: rgba(42,122,75,.1);
+      border: 1px solid rgba(42,122,75,.25); color: var(--green);
+      font-size: .72rem; font-weight: 600; padding: .22rem .7rem; border-radius: 4px;
+    }
 
-/* ══ EMPTY / LOADING ══ */
-.state-box {
-  text-align:center; padding:60px 24px;
-  color:var(--muted);
-}
-.state-box .icon { font-size:3rem; margin-bottom:16px; display:block; }
-.state-box h3 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.4rem; color:var(--ink);
-  margin-bottom:8px;
-}
-.state-box p { font-size:0.88rem; line-height:1.6; }
+    .card-footer {
+      padding: 1rem 1.5rem; border-top: 1px solid var(--cream2);
+      display: flex; gap: .6rem;
+    }
+    .btn-contact {
+      flex: 1; background: var(--navy); color: #fff; border: none;
+      border-radius: 6px; padding: .6rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 600;
+      cursor: pointer; text-align: center; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+      transition: background .2s;
+    }
+    .btn-contact:hover { background: var(--slate); }
+    .btn-wa {
+      background: #25d366; border-radius: 6px; width: 40px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.1rem; transition: opacity .2s; flex-shrink: 0;
+    }
+    .btn-wa:hover { opacity: .85; }
 
-.spinner {
-  width:36px; height:36px;
-  border:3px solid var(--border);
-  border-top-color:var(--gold);
-  border-radius:50%;
-  animation:spin 0.8s linear infinite;
-  margin:0 auto 16px;
-}
-@keyframes spin { to { transform:rotate(360deg); } }
+    .error-banner {
+      background: #fff3f3; border: 1px solid #fca5a5; border-radius: 8px;
+      padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+      font-size: .83rem; color: var(--red); display: none; line-height: 1.5;
+    }
 
-/* ══ MODAL ══ */
-.modal-overlay {
-  display:none; position:fixed; inset:0;
-  background:rgba(26,18,9,0.65);
-  backdrop-filter:blur(4px);
-  z-index:200;
-  align-items:center; justify-content:center;
-  padding:20px;
-}
-.modal-overlay.open { display:flex; }
-.modal {
-  background:#fff;
-  border-radius:12px;
-  max-width:540px; width:100%;
-  max-height:90vh; overflow-y:auto;
-  box-shadow:var(--shadow-lg);
-  animation:modalIn 0.2s ease;
-}
-@keyframes modalIn {
-  from { transform:translateY(12px); opacity:0; }
-  to   { transform:translateY(0);    opacity:1; }
-}
-.modal-header {
-  background:var(--ink);
-  padding:20px 22px;
-  display:flex; align-items:flex-start; gap:14px;
-  border-radius:12px 12px 0 0;
-  position:relative;
-}
-.modal-header::after {
-  content:''; position:absolute;
-  bottom:0; left:0; right:0;
-  height:2px; background:var(--gold);
-}
-.modal-close {
-  position:absolute; top:14px; right:14px;
-  background:none; border:none;
-  color:rgba(240,235,224,0.5);
-  font-size:1.3rem; cursor:pointer;
-  line-height:1; padding:4px;
-  transition:color 0.2s;
-}
-.modal-close:hover { color:var(--cream); }
-.modal-body { padding:22px; }
-.modal-section { margin-bottom:18px; }
-.modal-section-label {
-  font-size:0.68rem; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--muted);
-  font-weight:600; margin-bottom:8px;
-}
-.modal-detail { font-size:0.88rem; color:var(--ink); line-height:1.6; }
-.modal-tags { display:flex; flex-wrap:wrap; gap:6px; }
-.modal-contact-row {
-  display:flex; gap:10px; margin-top:16px;
-}
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.4);
+      text-align: center; padding: 1.75rem 2rem;
+      font-size: .78rem; line-height: 1.8;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-/* ══ FOOTER ══ */
-footer {
-  background:var(--ink);
-  border-top:2px solid var(--gold);
-  padding:28px 24px;
-  text-align:center;
-}
-.footer-copy {
-  font-size:0.75rem;
-  color:rgba(240,235,224,0.35);
-  line-height:1.7;
-}
-.footer-copy a { color:rgba(240,235,224,0.5); text-decoration:none; }
-.footer-copy a:hover { color:var(--gold-bright); }
-
-/* ══ RESPONSIVE ══ */
-@media(max-width:600px) {
-  .filters-inner { flex-direction:column; }
-  .filter-group, .filter-search { min-width:100%; }
-  .hero-stats { gap:20px; }
-  .lawyers-grid { grid-template-columns:1fr; }
-  .modal-contact-row { flex-direction:column; }
-}
-</style>
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .hide-mob { display: none; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .stat { padding: 0 1.25rem; }
+      .filters-inner { padding: .85rem 1rem; }
+      .main { padding: 1.5rem 1rem 3rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-left">
-    <div class="header-emblem">⚖</div>
-    <a href="./index.html" class="header-brand">
-      <strong>Justice LK</strong>
-      <span>යුක්තිය LK · நீதி LK</span>
-    </a>
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://acedynamicstrading.github.io/justicelk/">
+    <span class="nav-icon">⚖</span>
+    <span>
+      <strong class="nav-title">Justice LK</strong>
+      <span class="nav-sub">යුක්තිය LK · நீதி LK</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a class="hide-mob" href="https://acedynamicstrading.github.io/justicelk/">Case Portal</a>
+    <a class="hide-mob" href="https://acedynamicstrading.github.io/Lexlk/">LexLK</a>
+    <a class="nav-btn" href="https://acedynamicstrading.github.io/justicelk/lawyer-registration.html">Register as a Professional</a>
   </div>
-  <div class="header-right">
-    <a href="./index.html" class="header-link">Case Portal</a>
-    <a href="./lawyer-registration.html" class="btn-register-nav">Register as a Lawyer</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-watermark">⚖</span>
+  <div class="hero-badge">⚖ Justice LK · Legal Network</div>
+  <h1>Legal Professionals <em>Directory</em></h1>
+  <p>Find qualified attorneys, notaries, and legal professionals registered with the Justice LK national legal aid programme across Sri Lanka.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num" id="stat-total">—</span>
+      <span class="stat-label">Registered Professionals</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="stat-districts">—</span>
+      <span class="stat-label">Districts Covered</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="stat-areas">—</span>
+      <span class="stat-label">Practice Areas</span>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Justice LK · Legal Network</div>
-  <h1>Legal Professionals<br><em>Directory</em></h1>
-  <p class="hero-sub">Find qualified attorneys, notaries, and legal professionals registered with the Justice LK national legal aid programme across Sri Lanka.</p>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-num" id="stat-total">—</span>
-      <span class="hero-stat-lbl">Registered Professionals</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num" id="stat-districts">—</span>
-      <span class="hero-stat-lbl">Districts Covered</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num" id="stat-specs">—</span>
-      <span class="hero-stat-lbl">Practice Areas</span>
-    </div>
-  </div>
-</section>
-
 <!-- FILTERS -->
-<div class="filters-bar">
+<div class="filters-wrap">
   <div class="filters-inner">
-    <div class="filter-search">
-      <div class="filter-label">Search</div>
-      <input type="text" class="search-input" id="filter-search" placeholder="Name, specialisation, registration no…" oninput="applyFilters()">
-    </div>
-    <div class="filter-group">
-      <div class="filter-label">District</div>
-      <select class="filter-select" id="filter-district" onchange="applyFilters()">
-        <option value="">All Districts</option>
-        <option>Colombo</option><option>Gampaha</option><option>Kalutara</option>
-        <option>Kandy</option><option>Matale</option><option>Nuwara Eliya</option>
-        <option>Galle</option><option>Matara</option><option>Hambantota</option>
-        <option>Jaffna</option><option>Kilinochchi</option><option>Mannar</option>
-        <option>Vavuniya</option><option>Mullaitivu</option><option>Batticaloa</option>
-        <option>Ampara</option><option>Trincomalee</option><option>Kurunegala</option>
-        <option>Puttalam</option><option>Anuradhapura</option><option>Polonnaruwa</option>
-        <option>Badulla</option><option>Monaragala</option><option>Ratnapura</option>
-        <option>Kegalle</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <div class="filter-label">Registration Type</div>
-      <select class="filter-select" id="filter-regtype" onchange="applyFilters()">
-        <option value="">All Types</option>
-        <option value="AAL">Attorney-at-Law (AAL)</option>
-        <option value="Notary">Notary Public</option>
-        <option value="AAL+Notary">AAL + Notary</option>
-        <option value="PC">President's Counsel (PC)</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <div class="filter-label">Specialisation</div>
-      <select class="filter-select" id="filter-spec" onchange="applyFilters()">
-        <option value="">All Specialisations</option>
-        <option value="land">Land &amp; Property</option>
-        <option value="family">Family / Divorce</option>
-        <option value="debt">Debt / Money Recovery</option>
-        <option value="criminal">Criminal Defence</option>
-        <option value="employment">Employment / Labour</option>
-        <option value="consumer">Consumer Rights</option>
-        <option value="inheritance">Inheritance / Estates</option>
-        <option value="human-rights">Human Rights</option>
-        <option value="business">Business / Commercial</option>
-        <option value="child">Child Rights</option>
-        <option value="domestic">Domestic Violence</option>
-        <option value="immigration">Immigration</option>
-      </select>
-    </div>
-    <div class="filter-count" id="filter-count"></div>
+    <input type="search" id="search" placeholder="Search by name, bar number, specialisation…" autocomplete="off" />
+    <select id="filter-district">
+      <option value="">All Districts</option>
+      <option>Ampara</option><option>Anuradhapura</option><option>Badulla</option>
+      <option>Batticaloa</option><option>Colombo</option><option>Galle</option>
+      <option>Gampaha</option><option>Hambantota</option><option>Jaffna</option>
+      <option>Kalutara</option><option>Kandy</option><option>Kegalle</option>
+      <option>Kilinochchi</option><option>Kurunegala</option><option>Mannar</option>
+      <option>Matale</option><option>Matara</option><option>Monaragala</option>
+      <option>Mullaitivu</option><option>Nuwara Eliya</option><option>Polonnaruwa</option>
+      <option>Puttalam</option><option>Ratnapura</option><option>Trincomalee</option>
+      <option>Vavuniya</option>
+    </select>
+    <select id="filter-type">
+      <option value="">All Types</option>
+      <option>Attorney-at-Law (AAL)</option>
+      <option>Notary Public</option>
+      <option>Attorney-at-Law &amp; Notary Public</option>
+      <option>President's Counsel (PC)</option>
+    </select>
+    <select id="filter-spec">
+      <option value="">All Specialisations</option>
+      <option>Land &amp; Property</option>
+      <option>Family / Divorce</option>
+      <option>Debt / Money Recovery</option>
+      <option>Criminal Defence</option>
+      <option>Labour / Employment</option>
+      <option>Consumer Rights</option>
+      <option>Inheritance</option>
+      <option>Human Rights</option>
+      <option>Business / Commercial</option>
+      <option>Child Rights</option>
+      <option>Domestic Violence</option>
+    </select>
+    <button class="btn-clear" id="btn-clear">Clear</button>
+    <span class="filter-count" id="filter-count"></span>
   </div>
 </div>
 
 <!-- MAIN -->
 <main class="main">
-  <div class="results-header">
-    <div class="results-title" id="results-title">Loading professionals…</div>
+  <div class="error-banner" id="error-banner"></div>
+  <div id="container">
+    <div class="state-msg">
+      <div class="spinner"></div>
+      <p>Loading registered professionals…</p>
+    </div>
   </div>
-  <div id="lawyers-grid" class="lawyers-grid"></div>
 </main>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
-    <div class="modal-header" id="modal-header"></div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-copy">
-    © 2026 <a href="#">Elmo Richard Pereira</a>. All rights reserved.<br>
-    Operated by Ace Dynamics Trading under licence · Protected under the Intellectual Property Act No. 36 of 2003 of Sri Lanka.<br>
-    <a href="./index.html">Case Portal</a> · <a href="./lawyer-registration.html">Register as a Professional</a>
-  </p>
+  <div>© 2024–2026 Elmo Richard Pereira. All rights reserved.</div>
+  <div>Justice LK · National Digital Justice Access Programme · Sri Lanka</div>
+  <div style="margin-top:.5rem">
+    <a href="https://acedynamicstrading.github.io/justicelk/">Case Portal</a> ·
+    <a href="https://acedynamicstrading.github.io/justicelk/lawyer-registration.html">Register as a Professional</a> ·
+    <a href="https://acedynamicstrading.github.io/Lexlk/">LexLK</a>
+  </div>
+  <div style="margin-top:.4rem;font-size:.7rem;opacity:.5">
+    Operated by Ace Dynamics Trading under licence · Protected under the Intellectual Property Act No. 36 of 2003 of Sri Lanka
+  </div>
 </footer>
 
 <script>
-// ── CONFIG ──
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw1-e3dMkRAptrvQoKY4KZhxtyE9Nyt7ZP8MVL8LltlpYtO8CdV-xo2ESmcJizjNGQkYg/exec';
+// ─────────────────────────────────────────────────────────────────
+// CONFIG — reads from the "Lawyers" tab of your JusticeLK Database sheet
+// ─────────────────────────────────────────────────────────────────
+const SHEET_ID  = '1URCsLRi_GCnkRlWDsVK3ir7EqncAbyyaSUhQ2WkwzQ8';
+const SHEET_TAB = 'Lawyers';  // Must match the tab name exactly
+const CSV_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TAB)}`;
 
-// ── State ──
-let allLawyers  = [];
-let filtered    = [];
+// Expected headers in the Lawyers tab (column order doesn't matter — matched by name):
+//   ref, fullName, district, regType, barNumber, yearAdmitted, courts,
+//   languages, specialisations, feeRange, mobile, email, officeAddress, bio, photoUrl, status
 
-// ── Fetch on load ──
-window.addEventListener('DOMContentLoaded', loadLawyers);
+let allLawyers = [];
 
+// ── CSV parser (handles quoted fields with commas inside) ──
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = splitCSVRow(lines[0]).map(h => h.replace(/^"|"$/g, '').trim());
+  return lines.slice(1)
+    .map(line => {
+      const vals = splitCSVRow(line).map(v => v.replace(/^"|"$/g, '').trim());
+      const obj  = {};
+      headers.forEach((h, i) => { obj[h] = vals[i] || ''; });
+      return obj;
+    })
+    .filter(r => Object.values(r).some(v => v.trim()));
+}
+
+function splitCSVRow(row) {
+  const result = []; let cur = '', inQ = false;
+  for (let i = 0; i < row.length; i++) {
+    const c = row[i];
+    if (c === '"') { if (inQ && row[i+1] === '"') { cur += '"'; i++; } else { inQ = !inQ; } }
+    else if (c === ',' && !inQ) { result.push(cur); cur = ''; }
+    else { cur += c; }
+  }
+  result.push(cur);
+  return result;
+}
+
+// ── Fetch ──
 async function loadLawyers() {
-  showLoading();
   try {
-    const res = await fetch(SHEETS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ action: 'listLawyers', district: 'All' })
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status} — is the sheet published?`);
+    const text = await res.text();
+    if (text.trim().startsWith('<!')) throw new Error('Sheet is not publicly published as CSV.');
+    const rows = parseCSV(text);
+
+    // Show only approved / active rows
+    allLawyers = rows.filter(r => {
+      const s = (gf(r,'status') || '').toLowerCase().trim();
+      return s === 'approved' || s === 'active' || s === 'yes' || s === '';
     });
-    const data = await res.json();
-    if (!data.ok) throw new Error(data.error || 'Failed to load');
-    allLawyers = data.lawyers || [];
-    updateStats();
-    applyFilters();
-  } catch(err) {
+
+    updateStats(allLawyers);
+    renderGrid(allLawyers);
+  } catch (err) {
     showError(err.message);
   }
 }
 
-function updateStats() {
-  document.getElementById('stat-total').textContent = allLawyers.length;
-  const districts = new Set(allLawyers.map(l => l.district).filter(Boolean));
-  document.getElementById('stat-districts').textContent = districts.size;
-  const specs = new Set(allLawyers.flatMap(l => Array.isArray(l.specs) ? l.specs : []));
-  document.getElementById('stat-specs').textContent = specs.size || '—';
+function showError(msg) {
+  const b = document.getElementById('error-banner');
+  b.style.display = 'block';
+  b.innerHTML = `<strong>Could not load directory:</strong> ${esc(msg)}<br>
+    <small>Make sure the Google Sheet is published: <em>File → Share → Publish to web → choose "Lawyers" tab → CSV → Publish</em>.</small>`;
+  document.getElementById('container').innerHTML = `
+    <div class="state-msg">
+      <span class="icon">⚠️</span>
+      <h3>Directory unavailable</h3>
+      <p>The sheet may not be published yet. See the message above for setup instructions.</p>
+    </div>`;
+  updateCount(0);
 }
 
-function applyFilters() {
-  const search  = document.getElementById('filter-search').value.toLowerCase().trim();
-  const district= document.getElementById('filter-district').value;
-  const regtype = document.getElementById('filter-regtype').value;
-  const spec    = document.getElementById('filter-spec').value;
+// ── Stats ──
+function updateStats(lawyers) {
+  document.getElementById('stat-total').textContent = lawyers.length || '0';
+  const districts = new Set(lawyers.map(l => gf(l,'district')).filter(Boolean));
+  document.getElementById('stat-districts').textContent = districts.size || '0';
+  const areas = new Set();
+  lawyers.forEach(l => {
+    (gf(l,'specialisations') || gf(l,'specializations') || '').split(/[,;|]+/)
+      .forEach(s => { if (s.trim()) areas.add(s.trim()); });
+  });
+  document.getElementById('stat-areas').textContent = areas.size || '0';
+}
 
-  filtered = allLawyers.filter(l => {
-    if (district && l.district !== district) return false;
-    if (regtype  && l.regType  !== regtype)  return false;
-    if (spec) {
-      const specs = Array.isArray(l.specs) ? l.specs : [];
-      if (!specs.some(s => s.toLowerCase().includes(spec))) return false;
+// ── Render ──
+function renderGrid(lawyers) {
+  const container = document.getElementById('container');
+  if (!lawyers.length) {
+    container.innerHTML = `
+      <div class="state-msg">
+        <span class="icon">⚖</span>
+        <h3>No professionals found</h3>
+        <p>Try adjusting your search or filters. New registrations are reviewed within 2 business days.</p>
+      </div>`;
+    updateCount(0);
+    return;
+  }
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+  lawyers.forEach((l, i) => grid.appendChild(buildCard(l, i)));
+  container.innerHTML = '';
+  container.appendChild(grid);
+  updateCount(lawyers.length);
+}
+
+function updateCount(n) {
+  document.getElementById('filter-count').textContent = n > 0 ? `${n} professional${n!==1?'s':''}` : '';
+}
+
+// ── Field getter — tries lowercase, Title Case, and common variants ──
+function gf(row, ...keys) {
+  for (const k of keys) {
+    for (const attempt of [k, k.toLowerCase(), k.charAt(0).toUpperCase()+k.slice(1)]) {
+      if (row[attempt] && row[attempt].trim()) return row[attempt].trim();
     }
-    if (search) {
-      const hay = [l.name, l.reg, l.district, l.regType, l.bio,
-        ...(Array.isArray(l.specs) ? l.specs : []),
-        ...(Array.isArray(l.lang)  ? l.lang  : [])
-      ].join(' ').toLowerCase();
-      if (!hay.includes(search)) return false;
+  }
+  return '';
+}
+
+function initials(name) {
+  return (name||'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('');
+}
+
+// Handles both JSON arrays (written by Apps Script) and plain comma-separated strings
+function safeParseList(val) {
+  if (!val) return [];
+  const s = val.trim();
+  if (s.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(s);
+      return Array.isArray(parsed) ? parsed.filter(Boolean) : [];
+    } catch(e) {}
+  }
+  return s.split(/[,;|]+/).map(x => x.trim()).filter(Boolean);
+}
+
+// ── Photo URL resolver ──
+// Accepts three formats — all work, GitHub is preferred:
+//
+// 1. GitHub (recommended):
+//    https://raw.githubusercontent.com/acedynamicstrading/Legal-Professionals-Directory-Justicelk-/main/photos/name.jpg
+//
+// 2. Google Drive share link (auto-converted):
+//    https://drive.google.com/file/d/FILE_ID/view   →   converted automatically
+//
+// 3. Any direct image URL
+//
+function resolvePhotoUrl(url) {
+  if (!url) return '';
+
+  // Already a thumbnail URL — use as-is (this is what the Apps Script generates)
+  // e.g. https://drive.google.com/thumbnail?id=FILE_ID&sz=w400
+  if (url.includes('drive.google.com/thumbnail')) return url;
+
+  // Convert Drive share/view links → thumbnail URL
+  // Handles: /file/d/ID/view  and  ?id=ID  and  open?id=ID
+  const driveMatch =
+    url.match(/drive\.google\.com\/file\/d\/([^\/\?&]+)/) ||
+    url.match(/drive\.google\.com\/.*[?&]id=([^&]+)/);
+
+  if (driveMatch) {
+    return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w400`;
+  }
+
+  // GitHub raw URL or any other direct URL — use as-is
+  return url;
+}
+
+// ── Build card DOM ──
+function buildCard(l, idx) {
+  const name     = gf(l,'fullName','name','Full Name');
+  const district = gf(l,'district');
+  const regType  = gf(l,'regType','registrationType','Registration Type','type');
+  const barNum   = gf(l,'barNumber','barRegistrationNumber','Bar Number','barNum');
+  const yearAdm  = gf(l,'yearAdmitted','Year Admitted','yearAdmittedToBar');
+  const courts   = gf(l,'courts','Courts','courtsOfPractice');
+  const langs    = gf(l,'languages','Languages','languagesOfPractice');
+  const specs    = gf(l,'specialisations','specializations','Specialisations','caseSpecialisations');
+  const fee      = gf(l,'feeRange','fee','Fee Range','feeRange');
+  const mobile   = gf(l,'mobile','Mobile','mobileWhatsApp');
+  const email    = gf(l,'email','Email');
+  const address  = gf(l,'officeAddress','address','Office Address');
+  const bio      = gf(l,'bio','Bio','professionalBio');
+  const photoUrl = gf(l,'photoUrl','photo','Photo URL','photoURL');
+
+  const specList = safeParseList(specs);
+  const langList = safeParseList(langs);
+
+  const regShort = regType.includes('President') ? 'PC'
+                 : (regType.includes('Notary') && regType.includes('Attorney')) ? 'AAL + Notary'
+                 : regType.includes('Notary') ? 'Notary Public'
+                 : regType.includes('Attorney') ? 'Attorney-at-Law'
+                 : regType || 'Legal Professional';
+
+  const feeLabel = fee.toLowerCase().includes('entry')    ? '🟢 Entry · Rs.5,000–10,000'
+                 : fee.toLowerCase().includes('standard') ? '🔵 Standard · Rs.10,000–20,000'
+                 : fee.toLowerCase().includes('senior')   ? '🟣 Senior · Rs.20,000+'
+                 : fee || '';
+
+  const mobileClean = mobile.replace(/\D/g,'');
+  const waNum = mobileClean.startsWith('94') ? mobileClean : '94' + mobileClean.replace(/^0/,'');
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.style.animationDelay = `${Math.min(idx * 0.04, 0.4)}s`;
+
+  const resolvedPhoto = resolvePhotoUrl(photoUrl);
+  const avatarHtml = resolvedPhoto
+    ? `<div class="card-avatar"><img src="${esc(resolvedPhoto)}" alt="${esc(name)}" onerror="this.parentElement.textContent='${initials(name)||'⚖'}'" /></div>`
+    : `<div class="card-avatar">${initials(name)||'⚖'}</div>`;
+
+  card.innerHTML = `
+    <div class="card-header">
+      ${avatarHtml}
+      <div class="card-name-block">
+        <div class="card-name">${esc(name)||'Legal Professional'}</div>
+        <span class="card-reg-type">${esc(regShort)}</span>
+        ${barNum ? `<div class="card-bar-num">${esc(barNum)}${yearAdm ? ' · Admitted '+esc(yearAdm) : ''}</div>` : ''}
+      </div>
+    </div>
+    <div class="card-body">
+      <div>
+        ${district ? `<div class="meta-row"><span class="meta-icon">📍</span><span class="meta-label">District:&nbsp;</span><span class="meta-val">${esc(district)}</span></div>` : ''}
+        ${address  ? `<div class="meta-row" style="margin-top:.4rem"><span class="meta-icon">🏢</span><span class="meta-val">${esc(address)}</span></div>` : ''}
+        ${courts   ? `<div class="meta-row" style="margin-top:.4rem"><span class="meta-icon">🏛</span><span class="meta-label">Courts:&nbsp;</span><span class="meta-val">${esc(courts)}</span></div>` : ''}
+      </div>
+      ${specList.length ? `
+        <hr class="card-divider" />
+        <div>
+          <div class="spec-title">Specialisations</div>
+          <div class="spec-tags">${specList.map(s=>`<span class="spec-tag">${esc(s)}</span>`).join('')}</div>
+        </div>` : ''}
+      ${langList.length ? `
+        <hr class="card-divider" />
+        <div>
+          <div class="spec-title">Languages</div>
+          <div class="lang-tags">${langList.map(lg=>`<span class="lang-tag">${esc(lg)}</span>`).join('')}</div>
+        </div>` : ''}
+      ${feeLabel ? `
+        <hr class="card-divider" />
+        <div><span class="fee-badge">${esc(feeLabel)}</span></div>` : ''}
+      ${bio ? `
+        <hr class="card-divider" />
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.55">${esc(bio).substring(0,200)}${bio.length>200?'…':''}</p>` : ''}
+    </div>
+    <div class="card-footer">
+      <a class="btn-contact" href="${email ? 'mailto:'+esc(email) : mobile ? 'tel:'+esc(mobile) : '#'}">
+        ${email ? '✉ Email' : mobile ? '📞 Call' : 'Contact'}
+      </a>
+      ${mobileClean ? `<a class="btn-wa" href="https://wa.me/${waNum}" target="_blank" rel="noopener" title="WhatsApp">💬</a>` : ''}
+    </div>`;
+
+  return card;
+}
+
+function esc(str) {
+  return String(str||'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Filters ──
+function applyFilters() {
+  const q    = document.getElementById('search').value.toLowerCase().trim();
+  const dist = document.getElementById('filter-district').value.toLowerCase();
+  const type = document.getElementById('filter-type').value.toLowerCase();
+  const spec = document.getElementById('filter-spec').value.toLowerCase();
+
+  const filtered = allLawyers.filter(l => {
+    const blob = Object.values(l).join(' ').toLowerCase();
+    if (q && !blob.includes(q)) return false;
+    if (dist && !(gf(l,'district').toLowerCase()).includes(dist)) return false;
+    if (type) {
+      const t = (gf(l,'regType','registrationType','type')).toLowerCase();
+      if (!t.includes(type.split(' ')[0].toLowerCase())) return false;
+    }
+    if (spec) {
+      const s = (gf(l,'specialisations','specializations')).toLowerCase();
+      if (!s.includes(spec.split(' ')[0].toLowerCase())) return false;
     }
     return true;
   });
 
-  renderGrid();
-  document.getElementById('filter-count').textContent =
-    filtered.length + ' of ' + allLawyers.length + ' professionals';
-
-  const title = document.getElementById('results-title');
-  if (filtered.length === 0) {
-    title.innerHTML = 'No professionals found';
-  } else {
-    title.innerHTML = '<span>' + filtered.length + '</span> Legal Professional' + (filtered.length !== 1 ? 's' : '');
-  }
+  renderGrid(filtered);
 }
 
-// ── Spec label map ──
-const SPEC_LABELS = {
-  land:'Land & Property', family:'Family / Divorce', debt:'Debt / Money Recovery',
-  criminal:'Criminal Defence', employment:'Employment / Labour', consumer:'Consumer Rights',
-  inheritance:'Inheritance / Estates', 'human-rights':'Human Rights',
-  business:'Business / Commercial', child:'Child Rights',
-  domestic:'Domestic Violence', immigration:'Immigration'
-};
-const LANG_LABELS = { si:'සිංහල', ta:'தமிழ்', en:'English' };
+['search','filter-district','filter-type','filter-spec'].forEach(id => {
+  document.getElementById(id).addEventListener(id === 'search' ? 'input' : 'change', applyFilters);
+});
 
-function specLabel(s) {
-  return SPEC_LABELS[s] || s;
-}
-function langLabel(l) {
-  return LANG_LABELS[l] || l;
-}
+document.getElementById('btn-clear').addEventListener('click', () => {
+  document.getElementById('search').value = '';
+  ['filter-district','filter-type','filter-spec'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  renderGrid(allLawyers);
+});
 
-function renderGrid() {
-  const grid = document.getElementById('lawyers-grid');
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div class="state-box" style="grid-column:1/-1">
-        <span class="icon">🔍</span>
-        <h3>No professionals found</h3>
-        <p>Try adjusting your filters or search term.</p>
-      </div>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(l => {
-    const specs = Array.isArray(l.specs) ? l.specs : [];
-    const langs = Array.isArray(l.lang)  ? l.lang  : [];
-    const photoHtml = l.photoUrl
-      ? `<img src="${escHtml(l.photoUrl)}" class="lawyer-photo" alt="${escHtml(l.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        + `<div class="lawyer-photo-placeholder" style="display:none">⚖</div>`
-      : `<div class="lawyer-photo-placeholder">⚖</div>`;
-
-    const specTags = specs.slice(0,3).map(s =>
-      `<span class="spec-tag">${escHtml(specLabel(s))}</span>`
-    ).join('') + (specs.length > 3 ? `<span class="spec-tag">+${specs.length-3} more</span>` : '');
-
-    const langStr = langs.map(langLabel).join(' · ');
-
-    return `
-    <div class="lawyer-card" onclick="openModal('${escHtml(l.id)}')">
-      <div class="card-top">
-        ${photoHtml}
-        <div class="card-name-block">
-          <div class="card-name">${escHtml(l.name)}</div>
-          <span class="card-reg-type">${escHtml(l.regType || 'AAL')}</span>
-          ${l.reg ? `<div class="card-reg-num">Reg. No. ${escHtml(l.reg)}</div>` : ''}
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-district">${escHtml(l.district || 'Sri Lanka')}</div>
-        ${specTags ? `<div class="card-specs">${specTags}</div>` : ''}
-        ${langStr ? `<div class="card-langs"><strong>Languages:</strong> ${escHtml(langStr)}</div>` : ''}
-        ${l.bio ? `<div class="card-bio">${escHtml(l.bio)}</div>` : ''}
-        ${l.fee ? `<div class="card-fee">Consultation: <span>${escHtml(l.fee)}</span></div>` : ''}
-      </div>
-      <div class="card-footer">
-        <div class="btn-contact" style="cursor:pointer;">View Full Profile →</div>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ── Modal ──
-function openModal(id) {
-  const l = allLawyers.find(x => x.id === id);
-  if (!l) return;
-
-  const specs = Array.isArray(l.specs) ? l.specs : [];
-  const langs = Array.isArray(l.lang)  ? l.lang  : [];
-
-  const photoHtml = l.photoUrl
-    ? `<img src="${escHtml(l.photoUrl)}" class="lawyer-photo" style="width:72px;height:72px;" alt="${escHtml(l.name)}"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-      + `<div class="lawyer-photo-placeholder" style="display:none;width:72px;height:72px;">⚖</div>`
-    : `<div class="lawyer-photo-placeholder" style="width:72px;height:72px;">⚖</div>`;
-
-  document.getElementById('modal-header').innerHTML = `
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    ${photoHtml}
-    <div class="card-name-block">
-      <div class="card-name">${escHtml(l.name)}</div>
-      <span class="card-reg-type">${escHtml(l.regType || 'AAL')}</span>
-      ${l.reg ? `<div class="card-reg-num">Reg. No. ${escHtml(l.reg)}</div>` : ''}
-    </div>`;
-
-  const specTags = specs.map(s =>
-    `<span class="spec-tag">${escHtml(specLabel(s))}</span>`
-  ).join('');
-
-  document.getElementById('modal-body').innerHTML = `
-    ${l.district ? `
-    <div class="modal-section">
-      <div class="modal-section-label">District</div>
-      <div class="modal-detail">📍 ${escHtml(l.district)}</div>
-    </div>` : ''}
-    ${l.bio ? `
-    <div class="modal-section">
-      <div class="modal-section-label">About</div>
-      <div class="modal-detail">${escHtml(l.bio)}</div>
-    </div>` : ''}
-    ${specs.length ? `
-    <div class="modal-section">
-      <div class="modal-section-label">Specialisations</div>
-      <div class="modal-tags">${specTags}</div>
-    </div>` : ''}
-    ${langs.length ? `
-    <div class="modal-section">
-      <div class="modal-section-label">Languages of Practice</div>
-      <div class="modal-detail">${langs.map(langLabel).join(' · ')}</div>
-    </div>` : ''}
-    ${l.fee ? `
-    <div class="modal-section">
-      <div class="modal-section-label">Consultation Fee</div>
-      <div class="modal-detail" style="color:var(--gold);font-weight:700;">${escHtml(l.fee)}</div>
-    </div>` : ''}
-    <div class="modal-contact-row">
-      ${l.mobile ? `<a class="btn-contact" href="tel:${escHtml(l.mobile)}">📞 ${escHtml(l.mobile)}</a>` : ''}
-      ${l.email  ? `<a class="btn-contact outline" href="mailto:${escHtml(l.email)}">✉ Email</a>` : ''}
-    </div>
-    <p style="font-size:0.72rem;color:var(--muted);margin-top:14px;line-height:1.5;">
-      This professional is registered with the Justice LK network. Verify credentials independently before engaging legal services.
-    </p>`;
-
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModalBtn() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModalBtn();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
-
-// ── Loading / error states ──
-function showLoading() {
-  document.getElementById('lawyers-grid').innerHTML = `
-    <div class="state-box" style="grid-column:1/-1">
-      <div class="spinner"></div>
-      <h3>Loading professionals…</h3>
-      <p>Fetching the latest directory from the Justice LK network.</p>
-    </div>`;
-  document.getElementById('results-title').textContent = 'Loading…';
-}
-
-function showError(msg) {
-  document.getElementById('lawyers-grid').innerHTML = `
-    <div class="state-box" style="grid-column:1/-1">
-      <span class="icon">⚠️</span>
-      <h3>Could not load directory</h3>
-      <p>${escHtml(msg)}<br><br>
-        <button onclick="loadLawyers()" style="margin-top:8px;padding:8px 20px;background:var(--ink);color:var(--cream);border:none;border-radius:5px;cursor:pointer;font-family:'DM Sans',sans-serif;">
-          Try Again
-        </button>
-      </p>
-    </div>`;
-  document.getElementById('results-title').textContent = 'Error loading directory';
-}
-
-// ── Escape helper ──
-function escHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
-}
+// Boot
+loadLawyers();
 </script>
 </body>
 </html>
